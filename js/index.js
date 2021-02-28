@@ -1,15 +1,24 @@
 // Funcion 1.1 Clonado del Elemento de personaje-dummy
 for (const persona of totalPersonajes) {
   setTimeout(() => {
-    const dummy = document.querySelector(".personaje-dummy");
-    const dummyCopia = dummy.cloneNode(true);
+    const claseDummy = document.querySelector(".personaje-dummy").cloneNode(true);
 
-    console.log(dummyCopia);
+    // const dummy = document.querySelector(".personaje-dummy");
+    //const dummyCopia = dummy.cloneNode(true);
+
+    //console.log(dummyCopia);
 
     // Funcion 1.2 Eliminacion de clase
 
-    dummyCopia.classList.remove("personaje-dummy");
-    console.log(dummyCopia);
+    //dummyCopia.classList.remove("personaje-dummy");
+    //console.log(dummyCopia);
+    const estatuto = document.createElement("i");
+    estatuto.classList.add("fas");
+    claseDummy.classList.remove("personaje-dummy");
+    claseDummy.querySelector(".nombre").textContent = `${persona.nombre} ${persona.familia}`;
+    claseDummy.querySelector(".estado").appendChild(estatuto);
+    claseDummy.querySelector(".edad").textContent = `Edad: ${persona.edad}`;
+    claseDummy.querySelector(".estado").appendChild(estatuto);
 
     // Funcion 1.3 Alimentacion del HTML con los personajes
 
