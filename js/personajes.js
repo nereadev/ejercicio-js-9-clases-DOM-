@@ -105,7 +105,6 @@ function mensajePersonajes(nPersonajes) {
   return totalMensajes;
 }
 
-
 console.log(mensajePersonajes(totalPersonajes));
 
 //Imprimir la serie
@@ -129,13 +128,19 @@ tyrionLannister.morir();
 
 //Resumen de los Personajes
 
+function resumenPersonajes(totalPersonajes) {
+  const resumenPersonajes = [];
 
-const resumenPersonajes = elementos => elementos
-  .map(personajes => personajes.constructor.suNombre)
-  .filter((persona, i, personas) => personas.indexOf(persona) === i)
-  .map(persona => ({
-    persona, personajes: elementos
-      .filter(personaje => personaje.constructor.suNombre === persona)
-  }));
+  const personajes = Array.from(new Set(totalPersonajes.map((personaje) => personaje.constructor.name)));
+  for (const personaje of personajes) {
+    const totalPersonas = Array.from(new Set(totalPersonajes.filter((personaje) => personaje.constructor.name === personaje)));
+    totalPersonas.sort((Obj1, Obj2) => Obj1.edad - Obj2.edad);
+    resumenPersonajes.push({
+      tipo: personaje,
+      personajes: totalPersonajes
+    });
+  }
+  return resumenPersonajes;
+}
 
 console.log(resumenPersonajes(totalPersonajes));
