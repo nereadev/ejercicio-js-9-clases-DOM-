@@ -9,3 +9,5 @@ const dummyCopia = dummy.cloneNode(true);
 console.log(dummyCopia);
 
 div.textContent;
+
+document.getElementById('personaje-dummy').classList.remove('personaje-dummy');
