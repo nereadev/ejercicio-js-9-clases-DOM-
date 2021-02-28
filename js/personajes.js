@@ -96,3 +96,46 @@ const bronn =
 //Crear array con todos los personajes
 const totalPersonajes = [joeffreyBaratheon, jamieLannister,
   daenerysTargaryen, tyrionLannister, bronn];
+
+//Devolver mensaje Luchadores UTILIZAR instanceof
+function mensajePersonajes(nPersonajes) {
+  const totalMensajes = nPersonajes
+    .filter(personaje => personaje instanceof Luchador)
+    .map(personaje => personaje.comunicarse());
+  return totalMensajes;
+}
+
+
+console.log(mensajePersonajes(totalPersonajes));
+
+//Imprimir la serie
+const serie = totalPersonajes
+  .map(personaje => personaje.serie)
+  .filter((personaje, i, personajes) => personajes.indexOf(personaje) === i)
+  .toString();
+
+console.log(serie);
+
+
+//Imprimir todos los mensajes
+const mensajes = totalPersonajes.map((personaje) => personaje.comunicarse());
+
+console.log(mensajes);
+
+//Matar a Jamie y a Tyrion
+
+jamieLannister.morir();
+tyrionLannister.morir();
+
+//Resumen de los Personajes
+
+
+const resumenPersonajes = elementos => elementos
+  .map(personajes => personajes.constructor.suNombre)
+  .filter((persona, i, personas) => personas.indexOf(persona) === i)
+  .map(persona => ({
+    persona, personajes: elementos
+      .filter(personaje => personaje.constructor.suNombre === persona)
+  }));
+
+console.log(resumenPersonajes(totalPersonajes));
