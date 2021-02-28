@@ -17,10 +17,10 @@ class Personajes {
 
 }
 class Rey extends Personajes {
-  añosReinado;
+  tiempoReinado;
   constructor(suNombre, suFamilia, suEdad, suEstado, tiempoReinado) {
     super(suNombre, suFamilia, suEdad, suEstado);
-    this.añosReinado = tiempoReinado;
+    this.tiempoReinado = tiempoReinado;
   }
   comunicarse() {
     return "Vais a morir todos";
@@ -77,11 +77,11 @@ class Escudero extends Personajes {
 }
 
 //Crear personajes específicos
-const joeffreyBaratheon =
-  new Rey("Joeffrey", "Baratheon", 20, "vivo", 1);
+const joffreyBaratheon =
+  new Rey("Joffrey", "Baratheon", 20, "vivo", 1);
 
-const jamieLannister =
-  new Luchador("Jamie", "Lannister", 40, "vivo", "espada", 12);
+const jaimeLannister =
+  new Luchador("Jaime", "Lannister", 40, "vivo", "espada", 12);
 
 const daenerysTargaryen =
   new Luchador("Daenerys", "Targaryen", 30, "vivo", "dragón", 10);
@@ -94,7 +94,7 @@ const bronn =
 
 
 //Crear array con todos los personajes
-const totalPersonajes = [joeffreyBaratheon, jamieLannister,
+const totalPersonajes = [joffreyBaratheon, jaimeLannister,
   daenerysTargaryen, tyrionLannister, bronn];
 
 //Devolver mensaje Luchadores UTILIZAR instanceof
@@ -120,7 +120,7 @@ const mensajes = totalPersonajes.map((personaje) => personaje.comunicarse());
 
 //Matar a Jamie y a Tyrion
 
-jamieLannister.morir();
+jaimeLannister.morir();
 tyrionLannister.morir();
 
 //Resumen de los Personajes
