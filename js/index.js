@@ -1,17 +1,14 @@
 // Funcion 1.1 Clonado del Elemento de personaje-dummy
 
-const persona = document.getElementById(".personaje-dummy");
-const personaje = persona.children;
-
-const dummy = personaje[1];
+const dummy = document.querySelector(".personaje-dummy");
 const dummyCopia = dummy.cloneNode(true);
 
-
-div.textContent;
+console.log(dummyCopia);
 
 // Funcion 1.2 Eliminacion de clase
 
-document.getElementById('personaje-dummy').classList.remove('personaje-dummy');
+dummyCopia.classList.remove("personaje-dummy");
+console.log(dummyCopia);
 
 // Funcion 1.3 Alimentacion del HTML con los personajes
 
@@ -42,4 +39,4 @@ const actoresDePersonajes = (persona, img) => {
       img.alt = "Imagen desconocida";
       break;
   }
-}
+};

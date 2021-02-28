@@ -105,7 +105,6 @@ function mensajePersonajes(nPersonajes) {
   return totalMensajes;
 }
 
-console.log(mensajePersonajes(totalPersonajes));
 
 //Imprimir la serie
 const serie = totalPersonajes
@@ -113,13 +112,11 @@ const serie = totalPersonajes
   .filter((personaje, i, personajes) => personajes.indexOf(personaje) === i)
   .toString();
 
-console.log(serie);
 
 
 //Imprimir todos los mensajes
 const mensajes = totalPersonajes.map((personaje) => personaje.comunicarse());
 
-console.log(mensajes);
 
 //Matar a Jamie y a Tyrion
 
@@ -143,4 +140,3 @@ function resumenPersonajes(totalPersonajes) {
   return resumenPersonajes;
 }
 
-console.log(resumenPersonajes(totalPersonajes));
