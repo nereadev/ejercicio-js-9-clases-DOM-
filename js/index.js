@@ -3,7 +3,6 @@ for (const persona of totalPersonajes) {
   setTimeout(() => {
     const claseDummy = document.querySelector(".personaje-dummy").cloneNode(true);
     const estatuto = document.createElement("i");
-    estatuto.classList.add("fas");
 
     claseDummy.classList.remove("personaje-dummy");
     claseDummy.querySelector(".nombre").textContent = `${persona.nombre} ${persona.familia}`;
@@ -16,10 +15,12 @@ for (const persona of totalPersonajes) {
     const botonMuere = claseDummy.querySelector(".muere");
 
     function vivirMorir() {
+      estatuto.classList.add("fas");
       if (persona.estado === "vivo") {
         estatuto.classList.add("fa-thumbs-up");
         imgActor.classList.remove("muerte");
       } else {
+        estatuto.classList.remove("fa-thumbs-up");
         estatuto.classList.add("fa-thumbs-down");
         imgActor.classList.add("muerte");
       }
