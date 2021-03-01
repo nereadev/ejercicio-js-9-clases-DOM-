@@ -3,7 +3,6 @@ for (const persona of totalPersonajes) {
   setTimeout(() => {
     const claseDummy = document.querySelector(".personaje-dummy").cloneNode(true);
     const estatuto = document.createElement("i");
-    estatuto.classList.add("fas");
 
     claseDummy.classList.remove("personaje-dummy");
     claseDummy.querySelector(".nombre").textContent = `${persona.nombre} ${persona.familia}`;
@@ -14,12 +13,17 @@ for (const persona of totalPersonajes) {
     imgActor.src = `img/${persona.nombre.toLowerCase()}.jpg`;
     imgActor.alt = `${persona.nombre} ${persona.familia}`;
     const botonMuere = claseDummy.querySelector(".muere");
+    const botonHabla = claseDummy.querySelector(".habla");
+
+    const claseComunicaciones = document.querySelector(".comunicaciones");
 
     function vivirMorir() {
+      estatuto.classList.add("fas");
       if (persona.estado === "vivo") {
         estatuto.classList.add("fa-thumbs-up");
         imgActor.classList.remove("muerte");
       } else {
+        estatuto.classList.remove("fa-thumbs-up");
         estatuto.classList.add("fa-thumbs-down");
         imgActor.classList.add("muerte");
       }
@@ -27,16 +31,28 @@ for (const persona of totalPersonajes) {
 
     vivirMorir();
 
+    botonHabla.addEventListener("click", () => {
+      claseComunicaciones.querySelector(".display-1").textContent = persona.comunicarse();
+      const imgComunicaciones = claseComunicaciones.querySelector("img");
+      imgComunicaciones.src = `img/${persona.nombre.toLowerCase()}.jpg`;
+      imgComunicaciones.alt = `${persona.nombre} ${persona.familia}`;
+      claseComunicaciones.classList.add("on");
+      setTimeout(() => {
+        claseComunicaciones.classList.remove("on");
+      }, 2000);
+    });
+
+    botonMuere.addEventListener("click", () => {
+      persona.morir();
+      vivirMorir();
+    });
+
     if (persona instanceof Rey) {
       const reinado = document.createElement("li");
       reinado.classList.add("reinadoAnual");
       reinado.textContent = `Años que lleva de reinado: ${persona.tiempoReinado}`;
       claseDummy.querySelector(".personaje-overlay").querySelector(".metadata").append(reinado);
       claseDummy.querySelector(".emoji").textContent = "👑";
-      botonMuere.addEventListener("click", () => {
-        persona.morir();
-        vivirMorir();
-      });
     }
 
     if (persona instanceof Luchador) {
@@ -49,10 +65,6 @@ for (const persona of totalPersonajes) {
       atributo.textContent = `Destreza: ${persona.destreza}`;
       claseDummy.querySelector(".personaje-overlay").querySelector(".metadata").append(atributo);
       claseDummy.querySelector(".emoji").textContent = "🗡";
-      botonMuere.addEventListener("click", () => {
-        persona.morir();
-        vivirMorir();
-      });
     }
 
     if (persona instanceof Asesor) {
@@ -60,10 +72,6 @@ for (const persona of totalPersonajes) {
       asesoramiento.textContent = `Asesoro de: ${persona.personajeAsesoro}`;
       claseDummy.querySelector(".personaje-overlay").querySelector(".metadata").append(asesoramiento);
       claseDummy.querySelector(".emoji").textContent = "🎓";
-      botonMuere.addEventListener("click", () => {
-        persona.morir();
-        vivirMorir();
-      });
     }
 
     if (persona instanceof Escudero) {
@@ -74,10 +82,6 @@ for (const persona of totalPersonajes) {
       servicio.textContent = `A servicio de: ${persona.personajeQueSirve}`;
       claseDummy.querySelector(".personaje-overlay").querySelector(".metadata").append(servicio);
       claseDummy.querySelector(".emoji").textContent = "🛡";
-      botonMuere.addEventListener("click", () => {
-        persona.morir();
-        vivirMorir();
-      });
     }
 
     document.querySelector(".personajes").append(claseDummy);
